@@ -37,12 +37,14 @@ def ocr():
         lang = lang
 
     # OCR CONTENT
-    ocr_content = pytesseract.image_to_string(dosya, lang=lang).replace('\n\n', '\n')
+    ocr_content = pytesseract.image_to_string(dosya, lang=lang)
+    ocr_content_raw = ocr_content.replace('\n\n', '\n')
 
     # JSON Response
     json_response = {
         "status": True,
         "content": ocr_content,
+        "contentraw": ocr_content_raw,
         "length": len(ocr_content),
         "runtime": str(datetime.now() - startTime),
         "linelenght": str(len(ocr_content.split('\n'))),
