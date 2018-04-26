@@ -33,7 +33,7 @@ def ocr():
         "content": ocr_content,
         "length": len(ocr_content),
         "runtime": str(datetime.now() - startTime),
-        "linelenght": ocr_content.splitlines().count(),
+        "linelenght":str(ocr_content.splitlines().count()),
     }
 
 
