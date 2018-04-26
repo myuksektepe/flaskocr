@@ -10,6 +10,6 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
 
-ocr_content = pytesseract.image_to_string(dosya, lang='tur')
+ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
 
 print(ocr_content)
