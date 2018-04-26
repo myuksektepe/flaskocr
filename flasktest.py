@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from io import StringIO
+from io import BytesIO
 
 import pytesseract
 import requests
@@ -26,7 +26,7 @@ def ocr():
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
-        dosya = Image.open(StringIO(requests.get(img).content))
+        dosya = Image.open(BytesIO(requests.get(img).content))
 
     ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
 
