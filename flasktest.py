@@ -26,7 +26,7 @@ def ocr():
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
-        imgFile = StringIO(urlopen(img).read())
+        imgFile = StringIO(urlopen(img).read().decode('utf-8'))
         dosya = Image.open(imgFile)
 
     ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
