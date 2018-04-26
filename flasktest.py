@@ -30,7 +30,7 @@ def ocr():
         dosya = Image.open(BytesIO(requests.get(img).content))
 
     # LANGUAGE
-    lang = requests.args.get("lang", False)
+    lang = request.args.get("lang", False)
     if not lang:
         lang = "eng"
     else:
