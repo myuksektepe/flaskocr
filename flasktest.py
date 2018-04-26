@@ -36,8 +36,9 @@ def ocr():
         "linelenght": linelenght,
     }
 
-    result = json.dumps(json_response)
 
+
+    result = json.dumps(json_response)
     return render_template('result.html', result=result)
 
 
