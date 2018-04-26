@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 from datetime import datetime
 
 import pytesseract
@@ -32,7 +33,7 @@ def ocr():
         "wordslenght": str(len(ocr_content.split(' '))),
     }
 
-    result = json.dumps(json_response, sorted())
+    result = json.dumps(OrderedDict(json_response))
     return render_template('result.html', result=result)
 
 
