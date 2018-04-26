@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQL</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+
+</head>
+<body>
+
+<div>
+    {% for row in cevap %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+        </tr>
+    {% endfor %}
+</div>
+
+</body>
+</html>

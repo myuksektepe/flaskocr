@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dosyayuklemeformu</title>
+</head>
+<body>
+
+<h1>Dosya Yükleme Formu</h1>
+
+<form action="/dosyayuklemeformu/" method="post" enctype="multipart/form-data">
+    <input type="file" name="dosya" id="dosya">
+    <br>
+    <input type="submit" value="Yükle">
+</form>
+
+
+
+{% if uyari %}
+    <h1>{{ uyari }}</h1>
+{% endif %}
+
+
+</body>
+</html>

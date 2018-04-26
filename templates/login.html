@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<body>
+
+<h1>LOGIN</h1>
+
+<form action="/login/" method="post">
+    Kullanıcı Adı:<br>
+    <input type="text" name="kullaniciadi" value="">
+    <br>
+    <input type="submit" value="Giriş">
+</form>
+
+
+
+{% if uyari %}
+    <h1>{{ uyari }}</h1>
+{% endif %}
+
+
+{% if kullaniciadi %}
+    <h1>{{ kullaniciadi }}</h1>
+{% endif %}
+
+
+</body>
+</html>
