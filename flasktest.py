@@ -1,5 +1,4 @@
 import os
-from collections import OrderedDict
 from datetime import datetime
 
 import pytesseract
@@ -17,11 +16,12 @@ def ana_sayfa():
     return render_template('result.html', dosya=dosya)
 
 
-@app.route('/result', strict_slashes=False)
-def ocr():
+@app.route('/result/<img>', strict_slashes=False)
+def ocr(img):
     startTime = datetime.now()
-    dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
-    ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
+    if not img:
+        img = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
+    ocr_content = pytesseract.image_to_string(img, lang='tur').replace('\n\n', '\n')
 
     # JSON Response
     json_response = {
@@ -33,17 +33,17 @@ def ocr():
         "wordslenght": str(len(ocr_content.split(' '))),
     }
 
-    json_response_ordered = json.dumps(OrderedDict(
-        status=True,
-        content=ocr_content,
-        length=len(ocr_content),
-        runtime=str(datetime.now() - startTime),
-        linelenght=str(len(ocr_content.split('\n'))),
-        wordslenght=str(len(ocr_content.split(' '))),
-    ))
+    # json_response_ordered = json.dumps(OrderedDict(
+    #     status=True,
+    #     content=ocr_content,
+    #     length=len(ocr_content),
+    #     runtime=str(datetime.now() - startTime),
+    #     linelenght=str(len(ocr_content.split('\n'))),
+    #     wordslenght=str(len(ocr_content.split(' '))),
+    # ))
 
     result = json.dumps(json_response)
-    return render_template('result.html', result=json_response_ordered)
+    return render_template('result.html', result=result)
 
 
 if __name__ == '__main__':
