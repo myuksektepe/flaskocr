@@ -33,7 +33,9 @@ def ocr():
         "wordslenght": str(len(ocr_content.split(' '))),
     }
 
-    result = json.dumps(OrderedDict(json_response))
+    json_response_ordered = json.loads(json_response, OrderedDict)
+
+    result = json.dumps(json_response_ordered)
     return render_template('result.html', result=result)
 
 
