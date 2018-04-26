@@ -1,7 +1,7 @@
 import os
-import urllib
 from datetime import datetime
 from io import StringIO
+from urllib.request import urlopen
 
 import pytesseract
 from PIL import Image
@@ -26,7 +26,7 @@ def ocr():
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
-        imgFile = StringIO(urllib.urlopen(img).read())
+        imgFile = StringIO(urlopen(img).read())
         dosya = Image.open(imgFile)
 
     ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
