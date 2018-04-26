@@ -28,7 +28,7 @@ def ocr():
         "content": ocr_content,
         "length": len(ocr_content),
         "runtime": str(datetime.now() - startTime),
-        "linelenght": str(len(ocr_content.splitlines().count('\n'))),
+        "linelenght": str(ocr_content.splitlines().count('\n')),
     }
 
     result = json.dumps(json_response)
