@@ -20,7 +20,7 @@ def ana_sayfa():
 def ocr():
     startTime = datetime.now()
 
-    img = request.args["img"]
+    img = request.args.get("img", False)
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
