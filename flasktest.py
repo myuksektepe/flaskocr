@@ -3,7 +3,7 @@ from datetime import datetime
 
 import pytesseract
 from PIL import Image
-from flask import Flask, render_template, json
+from flask import Flask, render_template, json, request
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -16,9 +16,11 @@ def ana_sayfa():
     return render_template('result.html', dosya=dosya)
 
 
-@app.route('/result<img>', strict_slashes=False)
-def ocr(img):
+@app.route('/result', strict_slashes=False)
+def ocr():
     startTime = datetime.now()
+
+    img = request.args["img"]
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
