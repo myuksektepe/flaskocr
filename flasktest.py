@@ -42,8 +42,8 @@ def ocr():
         wordslenght=str(len(ocr_content.split(' '))),
     ))
 
-    result = json.dumps(json_response_ordered)
-    return render_template('result.html', result=result)
+    result = json.dumps(json_response)
+    return render_template('result.html', result=json_response_ordered)
 
 
 if __name__ == '__main__':
