@@ -39,7 +39,7 @@ def ocr():
                                            ("length", len(ocr_content)),
                                            ("runtime", str(datetime.now() - startTime)),
                                            ("linelenght", str(len(ocr_content.split('\n')))),
-                                           ("wordslenght", str(len(ocr_content.split(' '))))
+                                           ("wordslenght", str(len(ocr_content.split(' ')))),
                                        ])
 
     result = json.dumps(json_response)
