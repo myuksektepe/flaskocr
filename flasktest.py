@@ -22,13 +22,22 @@ def ana_sayfa():
 def ocr():
     startTime = datetime.now()
 
+    # IMAGE
     img = request.args.get("img", False)
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
         dosya = Image.open(BytesIO(requests.get(img).content))
 
-    ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
+    # LANGUAGE
+    lang = requests.args.get("lang", False)
+    if not lang:
+        lang = "eng"
+    else:
+        lang = lang
+
+    # OCR CONTENT
+    ocr_content = pytesseract.image_to_string(dosya, lang=lang).replace('\n\n', '\n')
 
     # JSON Response
     json_response = {
