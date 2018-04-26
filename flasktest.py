@@ -16,7 +16,7 @@ def ana_sayfa():
     return render_template('result.html', dosya=dosya)
 
 
-@app.route('/result/<img>', strict_slashes=False)
+@app.route('/result<img>', strict_slashes=False)
 def ocr(img):
     startTime = datetime.now()
     if not img:
