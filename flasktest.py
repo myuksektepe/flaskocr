@@ -1,6 +1,8 @@
 import os
+import urllib
 from datetime import datetime
 
+import cStringIO
 import pytesseract
 from PIL import Image
 from flask import Flask, render_template, json, request
@@ -24,8 +26,8 @@ def ocr():
     if not img:
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
-        import requests
-        dosya = Image.open(requests.get(img).text)
+        imgFile = cStringIO.StringIO(urllib.urlopen(img).read())
+        dosya = Image.open(imgFile)
 
     ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
 
