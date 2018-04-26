@@ -25,7 +25,7 @@ def ocr():
         dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     else:
         import requests
-        dosya = requests.get(img)
+        dosya = Image.open(requests.get(img))
 
     ocr_content = pytesseract.image_to_string(dosya, lang='tur').replace('\n\n', '\n')
 
