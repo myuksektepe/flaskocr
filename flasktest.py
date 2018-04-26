@@ -22,21 +22,14 @@ def ocr():
     dosya = Image.open(os.path.join(BASE_DIR, 'static/test.jpg'))
     ocr_content = pytesseract.image_to_string(dosya, lang='tur')
 
-
-
-
-
-
     # JSON Response
     json_response = {
         "status": True,
         "content": ocr_content,
         "length": len(ocr_content),
         "runtime": str(datetime.now() - startTime),
-        "linelenght":str(ocr_content.splitlines().count()),
+        "linelenght": str(len(ocr_content.splitlines().count('\n'))),
     }
-
-
 
     result = json.dumps(json_response)
     return render_template('result.html', result=result)
