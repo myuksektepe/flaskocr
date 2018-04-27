@@ -44,11 +44,11 @@ def ocr():
     json_response = {
         "status": True,
         "content": ocr_content,
-        "contentraw": ocr_content_raw,
+        # "contentraw": ocr_content_raw,
         "length": len(ocr_content),
         "runtime": str(datetime.now() - startTime),
-        "linelenght": str(len(ocr_content.split('\n'))),
-        "wordslenght": str(len(ocr_content.split(' '))),
+        "lines_count": str(len(ocr_content.split('\n'))),
+        "words_count": str(len(ocr_content.split(' '))),
     }
 
     # json_response_ordered = json.dumps(OrderedDict(
